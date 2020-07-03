@@ -3,19 +3,17 @@ import requests
 import json
 
 def home(request):
-
-    random = ['nature', 'love']
+    ACCESS_KEY='YBBd6J15p1YwXIV3THzl4Zt3eHiD3BGT8unud0VUNQo'
+    random = 'nature'
     payload = {
         'query': random,
-        'count': 15,
+        'count': 25,
         'client_id': ACCESS_KEY
     }
     url = 'https://api.unsplash.com/photos/random'
     r = requests.get(url, params=payload).json()
 
     package = json.dumps(r, indent=2)
-    print(type(r))
-    # print(package)
 
     arr = []
     for data in r:
@@ -23,14 +21,14 @@ def home(request):
 
     context = {
         'link': arr,
+        'text': "Image Gallery:",
     }
-    # output = " ".join(arr)
-    # return HttpResponse(output)
-    return render(request, 'core/home1.html', context)
+
+    return render(request, 'core/home.html', context)
 
 
 def search(request):
-    
+    ACCESS_KEY = 'YBBd6J15p1YwXIV3THzl4Zt3eHiD3BGT8unud0VUNQo'
     place = request.GET.get('q')
     payload = {
         'query': place,
@@ -41,15 +39,13 @@ def search(request):
     r = requests.get(url, params=payload).json()
 
     package = json.dumps(r, indent=2)
-    print(type(r['results']))
-    print(len(r['results']))
     arr = []
     for data in r['results']:
         arr.append(data['urls']['regular'])
 
+    place=place.upper()+":"
     context = {
         'link': arr,
+        'text': place,
     }
-    #output = " ".join(arr)
-    #return HttpResponse(output)
-    return render(request, 'core/home1.html', context)
+    return render(request, 'core/home.html', context)

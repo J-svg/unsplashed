@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,400italic'>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/ekko-lightbox.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'core/photo-grid.css' %}">
+    <title>Art in a flash</title>
+</head>
+<div>
+
+<header id="top">
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-12 web-title">
+                <a id="logo" href="{% url 'home'%}">
+                <h1><i>Art in a Flash</i></h1>
+                </a>
+            </div>
+             <div class="col-lg-8 col-md-12 main-menu">
+                <nav class="navbar navbar-light">
+                    <ul class="nav navbar-nav single-page-nav">
+                    <li class="nav-item">
+                    <div class="nav-link">
+                    <form class="form-inline my-2 my-lg-0" role="search" method="get" action="{% url 'search' %}">
+                      <input class="form-control mr-sm-2" type="search" placeholder="Explore more" aria-label="Search" name="q" value="{{ request.GET.q }}">
+                      <button class="btn btn-primary" type="submit">
+                          <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                              <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                          </svg>
+                      </button>
+                    </form>
+                     </div>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#gallery">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+        </div>
+    </div>
+</header>
+
+<section id="home">
+	<div class="container-fluid">
+        <div class="row web-home single-page-nav">
+        	<div class="col-md-offset-2 col-lg-offset-3 col-lg-6 col-md-8 col-sm-12 text-center">
+            	<h1>Art in a Flash</h1>
+            	<p>
+                   “In photography there is a reality so subtle that it becomes more real than reality.”
+                </p>
+            </div>
+        </div>
+	</div>
+</section>
+
+<section id="gallery">
+    <div class="container-fluid">
+    {% if text %}
+    <h2 id="text">{{ text }}</h2>
+    {% endif %}
+    </div>
+    <div class="main">
+        <div class="gallery">
+            {% for i in link %}
+                <div class="img">
+                <img src="{{ i }}" class="card-wide">
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section id="about">
+    <div class="container-fluid">
+        <div class="row web-section-header">
+        	<div class="col-md-offset-2 col-lg-offset-3 col-lg-6 col-md-8 col-sm-12 text-center">
+        		<h1 id="abo">About Us</h1>
+                <p id="abo">
+                    We try to give you a unique feel of photograph on this page as we focus on minute details.
+                    Art in a flash is a movement for creative excellence in story telling through photographs.
+                </p>
+                </div>
+            </div>
+        </div>
+	</div>
+</section>
+
+<section id="contact">
+	<div class="container-fluid">
+        <div class="row web-section-header">
+        	<div class="col-md-offset-2 col-lg-offset-3 col-lg-6 col-md-8 col-sm-12 text-center">
+        		<h1 id="abo">Contact</h1>
+                <p id="abo">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vestibulum tincidunt lorem a ante tristique bibendum vel bibendum lectus.
+                    In hac habitasse platea dictumst. Fusce lacinia lorem vel molestie bibendum. Phasellus congue pulvinar sem.
+                    Nullam porta justo vitae viverra laoreet. Quisque aliquam sem a est condimentum consequat.
+                    Nam feugiat quis est in finibus. Proin ante tellus, condimentum quis lectus eget, pulvinar vestibulum ex.
+                </p>
+        <div class="row">
+			<div class="web-content col-lg-12 col-md-12">
+        		<h1 id="abo">Our Address</h1>
+                <p id="abo">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Vestibulum tincidunt lorem a ante tristique bibendum vel bibendum lectus.
+                    In hac habitasse platea dictumst. Fusce lacinia lorem vel molestie bibendum. Phasellus congue pulvinar sem.
+                    Nullam porta justo vitae viverra laoreet. Quisque aliquam sem a est condimentum consequat.
+                    Nam feugiat quis est in finibus. Proin ante tellus, condimentum quis lectus eget, pulvinar vestibulum ex.</p>
+          		<p>
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+                    </svg>
+                    Email: info@company.com
+                </p>
+                <p>
+                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                     <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z"/>
+                    </svg>
+                    Phone: 070-070-0880
+                </p>
+            </div>
+        </div>
+     </div>
+</section>
+
+<footer>
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 single-page-nav text-right">
+            	<p><a href="#top">Go to top</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        <script src="{% static 'core/js/jquery.min.js' %}"></script>
+        <script src="{% static 'core/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'core/js/ekko-lightbox.min.js' %}"></script>
+        <script src="{% static 'core/js/jquery.singlePageNav.min.js' %}"></script>
+
+<script>
+            $('.single-page-nav').singlePageNav({
+                offset: $('.single-page-nav').outerHeight(),
+                filter: ':not(.external)',
+                updateHash: true,
+                beforeStart: function() {
+                    console.log('begin scrolling');
+                },
+                onComplete: function() {
+                    console.log('done scrolling');
+                }
+            });
+</script>
+</body>
+</html>
